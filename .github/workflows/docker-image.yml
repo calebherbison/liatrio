@@ -23,5 +23,4 @@ jobs:
         registry: calebherbisonliatrio
         repository: liatrio
         image: api
-        tag: $(date +%s)
         branch: main
