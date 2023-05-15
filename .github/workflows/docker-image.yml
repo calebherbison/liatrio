@@ -31,5 +31,7 @@ jobs:
         infile: ./kustomizations/overlays/lab/kustomization.yaml
         # Comma separated list of var=value
         varlist: newTag=GITHUB_SHA::8
-    - name: Github Pull Request
-      uses: repo-sync/pull-request@master
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
