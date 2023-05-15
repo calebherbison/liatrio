@@ -28,6 +28,6 @@ jobs:
       uses: rmeneely/update-yaml@v1
       with:
         # The YAML file to be updated
-        infile: ./kustomizations/overlays/lab
+        infile: ./kustomizations/overlays/lab/kustomization.yaml
         # Comma separated list of var=value
         varlist: newTag=GITHUB_SHA::8
