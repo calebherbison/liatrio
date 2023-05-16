@@ -32,7 +32,7 @@ jobs:
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
-        azcliversion: 2.0.72
+        azcliversion: 2.48.1
         inlineScript: |
             az aks get-credentials -n lab-0 -g lab-0
     - name: kubectl CLI
