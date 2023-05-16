@@ -6,5 +6,5 @@ resources:
 - ../../base
 nameSuffix: -lab
 images:
-- name: calebherbisonliatrio.azurecr.io/api
+- name: calebherbisonliatrio.azurecr.io/liatrio/api
   newTag: latest
