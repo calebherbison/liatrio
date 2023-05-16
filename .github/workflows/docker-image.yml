@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Azure Container Registry Build
+      uses: Azure/acr-build@v1
+      with:
+        service_principal: bd7a7579-d80a-42dc-a938-bb96d95d625b
+        service_principal_password: ${{ secrets.AZURE_CONTAINER_REGISTRY_CLIENT_SECRET }}
+        tenant: 9e55f92d-d39e-4887-ac93-2c08a450261a
+        registry: calebherbisonliatrio
+        repository: liatrio
+        image: api
+        branch: main
+        tag: latest
