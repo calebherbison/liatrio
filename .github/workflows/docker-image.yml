@@ -29,14 +29,14 @@ jobs:
       uses: azure/login@v1
       with:
         creds: '${{ secrets.AZURE_GITHUB_ACTIONS_CREDENTIALS }}'
+    - name: kubectl CLI
+      uses: imajeetyadav/kubectl@v1
+      with:
+        version: v1.25.3
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
         azcliversion: 2.48.1
         inlineScript: |
             az aks get-credentials -n lab-0 -g lab-0
-    - name: kubectl CLI
-      uses: imajeetyadav/kubectl@v1
-      with:
-        version: v1.25.3
-    - run: kubectl rollout restart deployment/api-lab -n liatrio
+            kubectl rollout restart deployment/api-lab -n liatrio
