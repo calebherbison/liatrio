@@ -7,11 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Azure Container Registry Build
@@ -29,14 +26,14 @@ jobs:
       uses: azure/login@v1
       with:
         creds: '${{ secrets.AZURE_GITHUB_ACTIONS_CREDENTIALS }}'
-    - name: kubectl CLI
-      uses: imajeetyadav/kubectl@v1
+    - name: Set AKS context
+      id: set-context
+      uses: azure/aks-set-context@v3
       with:
-        version: v1.25.3
-    - name: Azure CLI script
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.48.1
-        inlineScript: |
-            az aks get-credentials -n lab-0 -g lab-0
-            kubectl rollout restart deployment/api-lab -n liatrio
+        resource-group: lab-0
+        cluster-name: lab-0
+    - name: Setup kubectl
+      id: install-kubectl
+      uses: azure/setup-kubectl@v3
+    - run: |
+        kubectl rollout restart deployment/api-lab -n liatrio
