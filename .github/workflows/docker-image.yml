@@ -24,14 +24,3 @@ jobs:
         repository: liatrio
         image: api
         branch: main
-    - name: Deploy to lab
-      uses: rmeneely/update-yaml@v1
-      with:
-        # The YAML file to be updated
-        infile: ./kustomizations/overlays/lab/kustomization.yaml
-        # Comma separated list of var=value
-        varlist: newTag=GITHUB_SHA::8
-    - name: pull-request
-      uses: repo-sync/pull-request@v2
-      with:
-        destination_branch: "main"
