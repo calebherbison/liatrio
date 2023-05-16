@@ -34,7 +34,6 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-            az account set -s 'b9912d49-b7d7-4a55-b361-1613c829f4a2'
             az aks get-credentials -n lab-0 -g lab-0
     - name: kubectl CLI
       uses: imajeetyadav/kubectl@v1
