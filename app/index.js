@@ -9,7 +9,8 @@ const app = express();
 app.get('/', (req, res) => {
   res.send(JSON.stringify({
     message: "Automate all the things!",
-    timestamp: "1529729125"
+    timestamp: "1529729125",
+    pod: process.env.HOSTNAME 
   }));
 });
 
